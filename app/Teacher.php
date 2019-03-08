@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 /**
  * @property integer $id
@@ -15,8 +17,10 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $updated_at
  * @property Course[] $courses
  */
-class Teacher extends Model
+class Teacher extends Authenticatable
 {
+    use Notifiable;
+    
     /**
      * The "type" of the auto-incrementing ID.
      * 
