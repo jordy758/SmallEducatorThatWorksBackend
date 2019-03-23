@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property integer $teacher_id
  * @property string $name
  * @property string $description
+ * @property string $enrollment_key
  * @property string $created_at
  * @property string $updated_at
  * @property Teacher $teacher
@@ -27,7 +28,7 @@ class Course extends Model
     /**
      * @var array
      */
-    protected $fillable = ['teacher_id', 'name', 'description', 'created_at', 'updated_at'];
+    protected $fillable = ['teacher_id', 'name', 'description', 'enrollment_key', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

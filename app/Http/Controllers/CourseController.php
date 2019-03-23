@@ -7,6 +7,7 @@ use App\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Str;
 
 class CourseController extends Controller
 {
@@ -41,6 +42,7 @@ class CourseController extends Controller
         // Create the base course
         $course = new Course($request->all());
         $course->teacher_id = Auth::user()->id;
+        $course->enrollment_key = Str::random(30);
         $course->save();
 
         // Attach all the students that were checked to the course

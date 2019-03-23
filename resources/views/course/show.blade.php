@@ -8,7 +8,7 @@
                     <div class="card-header">{{ $course->name }}</div>
 
                     <div class="card-body">
-                        You are giving this course to {{ count($course->students) }} student(s).
+                        You are giving this course to {{ count($course->students) }} student(s). Students can use the following key to enroll on this course, even after creation <code>{{ $course->enrollment_key }}</code>
                         <hr/>
                         This course has {{ count($course->playLists) }} playlist(s). <br/><br/>
                         <ul>
