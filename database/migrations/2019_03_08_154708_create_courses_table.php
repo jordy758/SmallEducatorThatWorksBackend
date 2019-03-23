@@ -18,6 +18,7 @@ class CreateCoursesTable extends Migration
             $table->string('name');
             $table->longText('description')->nullable();
             $table->unsignedBigInteger('teacher_id');
+            $table->string('enrollment_key');
             $table->timestamps();
 
             $table->foreign('teacher_id')->references('id')->on('teachers');
