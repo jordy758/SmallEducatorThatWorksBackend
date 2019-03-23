@@ -52,7 +52,12 @@ class LessonController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Create the base course
+        $lesson = new Lesson($request->all());
+        $lesson->save();
+
+        $request->session()->flash('status', 'The lesson was successfully added!');
+        return redirect(route('show_lesson', $lesson));
     }
 
     /**
@@ -63,7 +68,7 @@ class LessonController extends Controller
      */
     public function show(Lesson $lesson)
     {
-        //
+        return view('lesson/show', ['lesson' => $lesson]);
     }
 
     /**

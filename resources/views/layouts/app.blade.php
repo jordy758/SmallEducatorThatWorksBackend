@@ -89,7 +89,7 @@
     <main class="py-4">
         @if (session('status'))
             <div class="row justify-content-center">
-                <div class="col-md-5 alert alert-success" role="alert">
+                <div class="col-md-6 alert alert-success" role="alert">
                     {{ session('status') }}
                 </div>
             </div>

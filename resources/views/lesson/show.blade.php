@@ -5,19 +5,12 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ $playlist->name }}</div>
+                    <div class="card-header">{{ $lesson->name }}</div>
 
                     <div class="card-body">
-                        This playlist has {{ count($playlist->lessons) }} lesson(s).
-                        <hr/>
-                        <ul>
-                            @foreach ($playlist->lessons as $lesson)
-                                <li>
-                                    {{ $lesson->name }}
-                                </li>
-                            @endforeach
-                        </ul>
-                        <a href="" class="btn btn-primary">Add Lesson</a>
+                        {{ $lesson->description }}
+                        <hr />
+                        <a href="{{ route('show_play_list', ['playList' => $lesson->playList]) }}">Back to playlist</a>
                     </div>
                 </div>
             </div>

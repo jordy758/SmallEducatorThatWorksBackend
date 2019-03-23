@@ -13,11 +13,13 @@
                         <ul>
                             @foreach ($playlist->lessons as $lesson)
                                 <li>
-                                    {{ $lesson->name }}
+                                    <a href="{{ route('show_lesson', $lesson) }}">{{ $lesson->name }}</a>
                                 </li>
                             @endforeach
                         </ul>
-                        <a href="{{ route('add_lesson', ['course_id' => $playlist->course_id, 'playlist_id' => $playlist->id]) }}" class="btn btn-primary">Add Lesson</a>
+                        <hr />
+                        <a href="{{ route('add_lesson', ['course_id' => $playlist->course_id, 'playlist_id' => $playlist->id]) }}" class="btn btn-primary">Add Lesson</a>&nbsp;&nbsp;&nbsp;
+                        <a href="{{ route('show_course', $playlist->course) }}">Back to course</a>
                     </div>
                 </div>
             </div>
