@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Course;
 use App\Lesson;
+use App\PlayList;
 use Illuminate\Http\Request;
 
 class LessonController extends Controller
@@ -20,11 +22,20 @@ class LessonController extends Controller
     /**
      * Show the form for creating a new resource.
      *
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $course = Course::find($request->get('course_id'));
+        return view('lesson/create', [
+            'playlists' => $course ? $course->playLists : [],
+            'courses' => Course::all()
+        ]);
+    }
+
+    public function redirect(Request $request) {
+        return redirect(route('add_lesson') . '?course_id=' . $request->get('course_id'));
     }
 
     /**
