@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Add Course') }}</div>
+                    <div class="card-header">{{ __('Add Playlist') }}</div>
 
                     <div class="card-body">
 
@@ -17,7 +17,7 @@
                                 <div class="col-md-6">
                                     <select class="form-control" name="course_id">
                                         @foreach ($courses as $course)
-                                            <option value="{{ $course->id }}">{{ $course->name }}</option>
+                                            <option value="{{ $course->id }}" {{$course_id == $course->id ? 'selected' : null}}>{{ $course->name }}</option>
                                         @endforeach
                                     </select>
 

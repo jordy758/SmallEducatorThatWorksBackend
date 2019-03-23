@@ -35,7 +35,7 @@
                                 <div class="col-md-6">
                                     <select id="play_list_id" class="form-control" name="play_list_id">
                                         @foreach ($playlists as $playlist)
-                                            <option value="{{ $playlist->id }}">{{ $playlist->name }}</option>
+                                            <option value="{{ $playlist->id }}" {{$playlist_id == $playlist->id ? 'selected' : null}}>{{ $playlist->name }}</option>
                                         @endforeach
                                     </select>
 

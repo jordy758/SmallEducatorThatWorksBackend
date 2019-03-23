@@ -17,7 +17,7 @@
                                 </li>
                             @endforeach
                         </ul>
-                        <a href="" class="btn btn-primary">Add Lesson</a>
+                        <a href="{{ route('add_lesson', ['course_id' => $playlist->course_id, 'playlist_id' => $playlist->id]) }}" class="btn btn-primary">Add Lesson</a>
                     </div>
                 </div>
             </div>

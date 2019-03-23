@@ -21,7 +21,7 @@
                             @endforeach
                         </ul>
                         <hr/>
-                        <a href="{{ route('add_play_list') }}" class="btn btn-primary">Add PlayList</a>
+                        <a href="{{ route('add_play_list', ['course_id' => $course->id]) }}" class="btn btn-primary">Add PlayList</a>
                     </div>
                 </div>
             </div>

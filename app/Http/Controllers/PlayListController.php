@@ -21,11 +21,12 @@ class PlayListController extends Controller
     /**
      * Show the form for creating a new resource.
      *
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('playlist/create', ['courses' => Course::all()]);
+        return view('playlist/create', ['courses' => Course::all(), 'course_id' => $request->get('course_id')]);
     }
 
     /**

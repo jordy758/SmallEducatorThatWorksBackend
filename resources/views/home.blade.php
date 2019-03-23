@@ -11,7 +11,7 @@
                         You are giving {{ count($user->courses) }} course(s).<br/><br/>
                         <ul>
                             @foreach ($user->courses as $course)
-                                <li><a href="{{ route('show_course', $course) }}">{{ $course->name }}</a></li>
+                                <li><a href="{{ route('show_course', $course) }}">{{ $course->name }}</a> with {{ count($course->playLists) }} playlist(s)</li>
                             @endforeach
                         </ul>
                     </div>
