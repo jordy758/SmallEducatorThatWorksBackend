@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Course;
 use App\PlayList;
 use Illuminate\Http\Request;
 
@@ -14,17 +15,18 @@ class PlayListController extends Controller
      */
     public function index()
     {
-        //
+        return view('playlist/index', ['user' => Auth::user()]);
     }
 
     /**
      * Show the form for creating a new resource.
      *
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        return view('playlist/create', ['courses' => Course::all(), 'course_id' => $request->get('course_id')]);
     }
 
     /**
@@ -35,7 +37,12 @@ class PlayListController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Create the base course
+        $playlist = new PlayList($request->all());
+        $playlist->save();
+
+        $request->session()->flash('status', 'The playlist was successfully added!');
+        return redirect(route('show_play_list', $playlist));
     }
 
     /**
@@ -46,7 +53,7 @@ class PlayListController extends Controller
      */
     public function show(PlayList $playList)
     {
-        //
+        return view('playlist/show', ['playlist' => $playList]);
     }
 
     /**

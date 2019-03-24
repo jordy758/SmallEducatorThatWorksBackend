@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Course;
+use App\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Str;
 
 class CourseController extends Controller
 {
@@ -14,7 +18,7 @@ class CourseController extends Controller
      */
     public function index()
     {
-        //
+        return view('course/index', ['user' => Auth::user()]);
     }
 
     /**
@@ -24,7 +28,7 @@ class CourseController extends Controller
      */
     public function create()
     {
-        //
+        return view('course/create', ['students' => Student::all()]);
     }
 
     /**
@@ -35,7 +39,19 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Create the base course
+        $course = new Course($request->all());
+        $course->teacher_id = Auth::user()->id;
+        $course->enrollment_key = Str::random(30);
+        $course->save();
+
+        // Attach all the students that were checked to the course
+        foreach ($request->students as $studentId) {
+            $course->students()->attach($studentId);
+        }
+        $course->save();
+        $request->session()->flash('status', 'The course was succesfully added!');
+        return redirect(route('show_course', $course));
     }
 
     /**
@@ -46,7 +62,7 @@ class CourseController extends Controller
      */
     public function show(Course $course)
     {
-        //
+        return view('course/show', ['course' => $course]);
     }
 
     /**
