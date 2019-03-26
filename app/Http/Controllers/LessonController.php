@@ -91,7 +91,8 @@ class LessonController extends Controller
      */
     public function update(Request $request, Lesson $lesson)
     {
-        //
+        $lesson->update($request->all());
+        return redirect(route('show_lesson', $lesson));
     }
 
     /**
@@ -99,9 +100,11 @@ class LessonController extends Controller
      *
      * @param  \App\Lesson $lesson
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
     public function destroy(Lesson $lesson)
     {
-        //
+        $lesson->delete();
+        return redirect(route('show_playlist', $lesson->playList()));
     }
 }
