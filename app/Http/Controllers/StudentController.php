@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class StudentController extends Controller
 {
@@ -24,7 +25,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        //
+        return view('student/create');
     }
 
     /**
@@ -35,7 +36,14 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Create the base course
+        $student = new Student($request->all());
+        $student->login_hash = Str::random(30);
+
+        $student->save();
+
+        $request->session()->flash('status', 'The student was successfully added!');
+        return redirect(route('add_course'));
     }
 
     /**
@@ -46,7 +54,7 @@ class StudentController extends Controller
      */
     public function show(Student $student)
     {
-        //
+        //        return view('student/show', ['student' => $student]);
     }
 
     /**

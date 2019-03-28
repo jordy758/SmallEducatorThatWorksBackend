@@ -46,6 +46,10 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('add_lesson') }}">{{ __('Add Lesson') }}</a>
                     </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('add_student') }}">{{ __('Add Student') }}</a>
+                    </li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->

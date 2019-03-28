@@ -31,4 +31,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/lessons/store', 'LessonController@store')->name('store_lesson');
     Route::get('/lessons/show/{lesson}', 'LessonController@show')->name('show_lesson');
     Route::post('/lessons/redirect', 'LessonController@redirect')->name('redirect_to_playlists');
+
+    Route::get('/student/create', 'StudentController@create')->name('add_student');
+    Route::post('/student/store', 'StudentController@store')->name('store_student');
 });
